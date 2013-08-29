@@ -39,22 +39,17 @@ module.exports.handleRequest = function (req, res) {
   }
 
   var validateURL = function(string) {
-    console.log("stupid text" + string);
     var options = {
       hostname: string,
       method: "GET"
     };
     var request = http.request(options, function(response){
-      console.log("attempting to request");
       response.on("end", function(){
-        console.log('made it into .on end. status code = ' + response.statusCode);
         var regex = /(2|3)../
         if (((response.statusCode).toString()).match(regex)) {
-          console.log('made it into status-code check')
           string = "\n" + string;
           fs.appendFile('../data/sites.txt', string, function(err){
             if (err) throw err;
-            console.log('works for: ' + string);
           });
         }
       });

@@ -20,14 +20,14 @@ describe("html fetcher helpers", function(){
       });
     });
 
-    waits(200);
+    waits(2000);
 
     runs(function() {
       expect(resultArray).toEqual(urlArray);
     });
   });
 
-  xit("should have a 'downloadUrls' function", function(){
+  it("should have a 'downloadUrls' function", function(){
     var result = htmlFetcherHelpers.downloadUrls();
     expect(result).toBeTruthy();
   });
